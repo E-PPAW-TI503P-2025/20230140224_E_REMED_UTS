@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perpustakaan Digital</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="hero">
+      <div class="hero-card">
+        <div class="hero-title">
+          <span class="logo">📚</span>
+          <div>
+            <h1>Perpustakaan Digital</h1>
+            <p>Sistem Peminjaman Buku Online</p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <div class="user-id">
+            <span>User ID:</span>
+            <input id="userIdInput" type="number" value="1" min="1" />
+          </div>
+          <a class="admin-link" href="login.html">Go to Admin Dashboard</a>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="search-wrap">
+        <div class="search">
+          <span class="search-icon">🔎</span>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Cari judul buku atau pengarang..."
+          />
+        </div>
+      </div>
+
+      <section>
+        <div id="statusMsg" class="status"></div>
+        <div id="bookGrid" class="grid"></div>
+      </section>
+    </main>
+
+    <!-- Modal Pinjam -->
+    <div id="borrowModal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modalTitle">Pinjam Buku</h3>
+          <button id="closeModalBtn" class="icon-btn" aria-label="Close">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-book">
+            <div class="thumb">📘</div>
+            <div>
+              <div id="modalBookName" class="modal-bookname">-</div>
+              <div id="modalBookMeta" class="modal-meta">-</div>
+            </div>
+          </div>
+
+          <div class="form">
+            <input id="bookId" type="hidden" />
+
+            <label>Latitude</label>
+            <input id="latitude" type="text" placeholder="contoh: -6.200000" />
+
+            <label>Longitude</label>
+            <input id="longitude" type="text" placeholder="contoh: 106.816666" />
+
+            <button id="autoLocBtn" class="btn secondary" type="button">
+              📍 Ambil Lokasi Otomatis
+            </button>
+
+            <button id="borrowBtn" class="btn primary" type="button">
+              📚 Pinjam Buku
+            </button>
+
+            <div id="borrowStatus" class="status small"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">UTS Remedial PAW – Library System</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

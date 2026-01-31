@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-card">
+      <div class="hero-title">
+        <span class="logo">🔐</span>
+        <div>
+          <h1>Login Admin</h1>
+          <p>Masuk untuk mengakses Dashboard Admin</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="max-width:600px;">
+    <div class="container-card">
+      <h2>Masukkan Akun Admin</h2>
+
+      <label>Username</label>
+      <input id="adminUser" type="text" placeholder="admin" />
+
+      <label style="margin-top:10px;">Password</label>
+      <input id="adminPass" type="password" placeholder="admin123" />
+
+      <button id="loginBtn" class="btn primary" type="button" style="margin-top:12px;">
+        Login
+      </button>
+
+      <p id="loginMsg" class="status"></p>
+
+      <a href="index.html" class="admin-link" style="display:inline-block;margin-top:12px;">
+        ← Kembali ke User Page
+      </a>
+    </div>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

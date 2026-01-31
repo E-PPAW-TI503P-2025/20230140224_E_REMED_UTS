@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- GUARD: kalau belum login, lempar ke login -->
+  <script>
+    if (!localStorage.getItem("adminToken")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div style="padding:16px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+    <div>
+      <h1 style="margin:0;">👑 Admin Dashboard</h1>
+      <p style="margin:6px 0 0; opacity:.8;">Library System</p>
+    </div>
+    <button id="logoutBtn" class="btn secondary" type="button" style="width:auto; padding:10px 16px;">
+      🚪 Logout
+    </button>
+  </div>
+
+  <div class="container" style="max-width:1100px;">
+    <!-- FORM TAMBAH BUKU -->
+    <div class="container-card" style="margin-top:18px;">
+      <h2>📚 Kelola Buku</h2>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <input id="title" placeholder="Judul" />
+        <input id="author" placeholder="Penulis" />
+        <input id="stock" type="number" placeholder="Stok" min="0" />
+        <button id="saveBtn" class="btn primary" type="button" style="width:auto;">
+          💾 Simpan Buku
+        </button>
+        <button id="resetBtn" class="btn secondary" type="button" style="width:auto;">
+          ↩ Reset
+        </button>
+      </div>
+
+      <p id="adminMsg" class="status"></p>
+    </div>
+
+    <!-- LIST BUKU -->
+    <div class="container-card" style="margin-top:18px;">
+      <h2>📖 Daftar Buku</h2>
+
+      <div style="overflow:auto;">
+        <table class="table" style="width:100%;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Judul</th>
+              <th>Penulis</th>
+              <th>Stok</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="bookTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BORROW LOGS -->
+    <div class="container-card" style="margin-top:18px;">
+      <h2>📌 Daftar Peminjaman (Borrow Logs)</h2>
+
+      <div style="overflow:auto;">
+        <table class="table" style="width:100%;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Book ID</th>
+              <th>Judul</th>
+              <th>Penulis</th>
+              <th>Tanggal</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+            </tr>
+          </thead>
+          <tbody id="borrowLogTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL EDIT -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>✏️ Edit Buku</h3>
+        <button id="closeEditModalBtn" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <input id="editId" type="hidden" />
+        <div class="form">
+          <label>Judul</label>
+          <input id="editTitle" />
+          <label>Penulis</label>
+          <input id="editAuthor" />
+          <label>Stok</label>
+          <input id="editStock" type="number" min="0" />
+
+          <button id="updateBtn" class="btn primary" type="button">✅ Update</button>
+          <button id="cancelBtn" class="btn secondary" type="button">Batal</button>
+
+          <p id="editMsg" class="status small"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">UTS Remedial PAW - Admin</footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>
